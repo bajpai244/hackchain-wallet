@@ -6,3 +6,6 @@
 /package-lock.json
 /tmp
 node_modules
+
+# MD file where I document what should I implement in future for this project, also use it to ideate sometimes 
+todo.md
