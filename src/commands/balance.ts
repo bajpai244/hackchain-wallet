@@ -13,8 +13,6 @@ export default class Balance extends Command {
 
 	static usage = "balance"
 
-	static args = [{ name: 'file' }]
-
 	async run() {
 		const { args, flags } = this.parse(Balance)
 		console.log(args)
