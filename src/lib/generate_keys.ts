@@ -25,6 +25,7 @@ let options = {
 
 const generate_keys: t_generate_keys = (dir_path) => {
 	const { publicKey, privateKey } = crypto.generateKeyPairSync(RSA, options);
+
 	if (!fs.existsSync(path.join(base_path))) {
 		fs.mkdirSync(base_path);
 	}
