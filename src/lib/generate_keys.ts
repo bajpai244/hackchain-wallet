@@ -1,7 +1,6 @@
 import * as fs from "fs";
 import * as path from "path";
 import { t_generate_keys } from "./types/index";
-import base_path from "./base_path";
 const crypto = require("crypto");
 
 const RSA = "rsa";
@@ -17,8 +16,7 @@ let options = {
 	},
 	privateKeyEncoding: {
 		type: "pkcs8",
-		format: "pem",
-		cipher: "aes-256-cbc",
+		format: "pem", cipher: "aes-256-cbc",
 		passphrase: passphrase,
 	},
 };
@@ -26,15 +24,15 @@ let options = {
 const generate_keys: t_generate_keys = (dir_path) => {
 	const { publicKey, privateKey } = crypto.generateKeyPairSync(RSA, options);
 
-	if (!fs.existsSync(path.join(base_path))) {
-		fs.mkdirSync(base_path);
+	if (!fs.existsSync(path.join(dir_path))) {
+		fs.mkdirSync(dir_path);
 	}
 
-	fs.writeFileSync(path.join(dir_path, "/public_key.txt"), publicKey, {
+	fs.writeFileSync(path.join(dir_path, "/public_key.key"), publicKey, {
 		encoding: "utf8",
 	});
 
-	fs.writeFileSync(path.join(dir_path, "/private_key.txt"), privateKey, {
+	fs.writeFileSync(path.join(dir_path, "/private_key.key"), privateKey, {
 		encoding: "utf8",
 	});
 

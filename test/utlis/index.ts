@@ -1,0 +1,1 @@
+export { default as rm_dir } from './rm_dir'
